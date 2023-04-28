@@ -1,5 +1,8 @@
 title: Wonseok's Blog
 description: This is my personal blog. I will write about my research and life.
-remote_theme: pmarsceill/just-the-docs
-
 url: https://i-am-wonseoklee.github.io
+
+theme: just-the-docs
+
+plugins:
+  - jekyll-default-layout
