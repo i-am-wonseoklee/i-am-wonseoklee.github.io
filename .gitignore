@@ -1,4 +1,5 @@
 .vscode/
+a.out
 Gemfile.lock
 
 # Copied from https://github.com/github/gitignore/blob/main/Jekyll.gitignore
