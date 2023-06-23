@@ -81,3 +81,11 @@ permalink: /docs/geometric-algorithms/00-picks-theorem
 > $$
 >
 > QED. $$\square$$
+
+<script src="https://utteranc.es/client.js"
+        repo="i-am-wonseoklee/i-am-wonseoklee.github.io"
+        issue-term="pathname"
+        theme="github-dark-orange"
+        crossorigin="anonymous"
+        async>
+</script>
