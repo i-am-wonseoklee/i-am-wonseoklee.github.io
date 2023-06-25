@@ -8,3 +8,19 @@ plugins:
   - jekyll-default-layout
 
 math: mathjax
+
+callouts:
+  highlight:
+    color: purple
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: yellow
+  warning:
+    title: Warning
+    color: red
