@@ -11,6 +11,8 @@ permalink: /docs/modern-robotics/01-configuration-space-01
 
 **Lecture:** ~ Chapter 2: Configuration Space (Part 2 of 2)
 
+**Keywords:** `Configuration Space`{: .label }, `Topology`{: .label }, `Holonomic Constarint`{: .label }, `Nonholonomic Constarint`{: .label }, `Pfaffian Constarint`{: .label }
+
 ## I. Configuration Space Topology
 
 앞선 챕터까지는 configuration space(이하 C-space)의 dimension(i.e. DoF)에 집중해왔다.

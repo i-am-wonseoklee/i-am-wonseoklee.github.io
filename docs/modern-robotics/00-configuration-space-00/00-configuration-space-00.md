@@ -11,6 +11,8 @@ permalink: /docs/modern-robotics/00-configuration-space-00
 
 **Lecture:** ~ Chapter 2: Configuration Space (Part 1 of 2)
 
+**Keywords:** `Configurtaion Space`{: .label }, `Degree of Freedom`{: .label }, `Grubler's Formula`{: .label }
+
 ## I. Configuration
 
 Configuration은 robot을 이루는 모든 point들에 대한 **위치**를 나타내는 specification이다. 예를들어, 2D planar robot의 경우 $$(x, y, theta)$$, 3D spatial robot의 경우 $$(x, y, z, roll, pitch, yaw)$$가 될 수 있다.
