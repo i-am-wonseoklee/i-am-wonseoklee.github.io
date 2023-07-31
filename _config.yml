@@ -6,6 +6,7 @@ theme: just-the-docs
 
 plugins:
   - jekyll-default-layout
+  - jekyll-sitemap  
 
 math: mathjax
 
