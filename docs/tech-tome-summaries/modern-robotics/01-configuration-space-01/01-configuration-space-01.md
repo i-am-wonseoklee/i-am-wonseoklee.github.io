@@ -2,7 +2,8 @@
 title: Configuration Space (Part 2 of 2)
 layout: default
 parent: Modern Robotics
-permalink: /docs/modern-robotics/01-configuration-space-01
+grand_parent: TechTome Summaries
+permalink: /docs/tech-tome-summaries/modern-robotics/01-configuration-space-01
 ---
 
 # Configuration Space (Part 2 of 2)
@@ -43,7 +44,7 @@ $$\mathbf{E}^{1}$$은 무한히 뻗어나가는 평면이고, $$\mathbf{S}^{2}$$
 위의 정의는 (어릴적 해보았을) 지점토 놀이를 떠올리면 받아들이기 수월한데, 아래 움짤이 이를 표현하고 있다.
 아래 그림에서 커피잔은 cutting이나 gluing 없이 도넛으로 변형되었고, 따라서 도넛과 커피잔은 topologically equivalent하다.
 
-![](/docs/modern-robotics/01-configuration-space-01/coffee_and_doughnut.gif)
+![](/docs/tech-tome-summaries/modern-robotics/01-configuration-space-01/coffee_and_doughnut.gif)
 
 ## II. Configuration Space Representation
 
@@ -65,7 +66,7 @@ $$\mathbf{E}^{1}$$은 무한히 뻗어나가는 평면이고, $$\mathbf{S}^{2}$$
 이러한 특이점을 `singularity`라고 부르는데, 풀고자하는 문제의 C-space에 `singluarity`가 존재하면 매번 특수하게 처리를 해주어야한다.
 반면, 조금 비효율적이더라도 `implicit parametrization`을 사용하면 `singularity`가 해소되어 보다 편하게 문제를 풀 수 있다.
 
-![](/docs/modern-robotics/01-configuration-space-01/singularity.gif)
+![](/docs/tech-tome-summaries/modern-robotics/01-configuration-space-01/singularity.gif)
 
 ## III. Holonomic vs. Nonholonomic Constraints
 
@@ -94,7 +95,7 @@ $$\mathbf{E}^{1}$$은 무한히 뻗어나가는 평면이고, $$\mathbf{S}^{2}$$
 
 책에서는 holonomic constraint의 설명을 위해서 아래의 planar four-bar linkage를 예시하고 있다.
 
-![](/docs/modern-robotics/01-configuration-space-01/four-bar-linkage.png)
+![](/docs/tech-tome-summaries/modern-robotics/01-configuration-space-01/four-bar-linkage.png)
 
 위의 예제에 적용되는 constraint들은 아래와 같이 3개의 독립적인 equation으로 표현해줄 수 있다.
 
@@ -111,7 +112,7 @@ $$
 > 하지만, 굳이 스트레스 받아가며 contraint의 도출 과정을 들여다보지는 않았다.
 > 다만, 중요하다고 생각하는 점은 "왜 3개의 contraint가 도출되었는가?" 정도였고, 그 이유는 다음과 같다.
 > - four-bar linkage 예제는 configurtaion을 4개의 실수($$\theta_{1}, ... , \theta_{4}$$)로 표현했다.
-> - four-bar linkage 예제를 앞선 챕터에서 배운 [Grubler's Formula](/docs/modern-robotics/00-configuration-space-00/00-configuration-space-00.md)에 넣어주면 $$DoF = 3 \cdot (4 - 1 - 4) + 1 \cdot 4 = 1$$임을 알 수 있다.
+> - four-bar linkage 예제를 앞선 챕터에서 배운 [Grubler's Formula](/docs/tech-tome-summaries/modern-robotics/00-configuration-space-00/00-configuration-space-00.md)에 넣어주면 $$DoF = 3 \cdot (4 - 1 - 4) + 1 \cdot 4 = 1$$임을 알 수 있다.
 > - 따라서, 4개의 실수를 사용한 `implicit parametrization`을 1 DoF로 줄여주기 위해서는 3개의 independent contraint가 찾아져야 한다.
 
 한편, 위의 constraint는 조금 더 general하게 아래와 같은 형태로 표현해 줄 수 있다.
@@ -206,7 +207,7 @@ $$
 
 책에서는 아래의 rolling coin 예제를 통해 `nonholonomic constraint`를 설명한다.
 
-![](/docs/modern-robotics/01-configuration-space-01/rolling-coin.png)
+![](/docs/tech-tome-summaries/modern-robotics/01-configuration-space-01/rolling-coin.png)
 
 위 예제에서 동전이 평면 위에서 미끄러지 않는다고 가정을 하면 동전이 속력은 동전의 반지름을 $$r$$이라고 할 때, $$r\dot{\theta}$$가 된다.
 따라서, lateral/longitudinal velocity에 대한 아래의 관계를 얻을 수 있다.
