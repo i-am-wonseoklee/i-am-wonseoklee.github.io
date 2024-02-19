@@ -29,7 +29,7 @@ $$
 뭐 솔직히 같은 말이라서 크게 주목할 필요는 없지만, 혹시라도 나중에 이 책에서 아래와 같은 표현이 나오면 당황하게 될 테니 적어 놓는다.
 
 $$
-\mathbf{0} = \mathbf{v}_{1} + \frac{{\lambda}_{2}}{\lambda_1}\mathbf{v}_{2} + ... + \frac{{\lambda}_{n}}{\lambda_1}\mathbf{v}_{n}, \lambda_1 \neq 0
+\mathbf{0} = \mathbf{v}_{1} + \frac{\lambda_{2}}{\lambda_1}\mathbf{v}_{2} + ... + \frac{\lambda_{n}}{\lambda_1}\mathbf{v}_{n}, \lambda_1 \neq 0
 $$
 
 ## III. Exercises
