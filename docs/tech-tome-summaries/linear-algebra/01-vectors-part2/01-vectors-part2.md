@@ -1,6 +1,7 @@
 ---
 title: Vectors (Part 2)
 layout: default
+nav_order: 2
 parent: Linear Algebra
 grand_parent: TechTome Summaries
 permalink: /docs/tech-tome-summaries/linear-algebra/01-vectors-part2
