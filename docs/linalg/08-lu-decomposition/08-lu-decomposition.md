@@ -41,7 +41,7 @@ permalink: /docs/linalg/08-lu-decomposition
 > 그냥 맨 아래 행부터 위에 행으로 대입 (`back`) 하거나 맨 위에 행부터 아래 행으로 대입 (`forward`) 해 나가는 소거법의 일종이다.
 
 자 이제 다시 본론으로 돌아와서, 우리가 어찌저찌 열심히 노력해서 $$\mathbf{A} = \mathbf{L} \mathbf{U}$$ 로 LU decomposition 을 했다고 해보자.
-이때, 우리는 주어진 방정식 $$mathbf{A} mathbf{x} = \mathbf{b}$$ 을 다음과 같이 변형하여 풀어줄 수 있다.
+이때, 우리는 주어진 방정식 $$\mathbf{A} \mathbf{x} = \mathbf{b}$$ 을 다음과 같이 변형하여 풀어줄 수 있다.
 달리 말하면, 두번째 식에서 $$\mathbf{U} \mathbf{x}$$ 을 forward substitution으로 구해주고, 곧바로 이어서 back substitution으로 $$\mathbf{x}$$ 를 구해줄 수 있다는 이야기이다.
 
 $$
