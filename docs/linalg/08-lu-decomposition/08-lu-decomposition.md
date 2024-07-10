@@ -12,11 +12,11 @@ permalink: /docs/linalg/08-lu-decomposition
 
 **Keywords:** `lu decomposition`{: .label }, `reduced row echelon form`{: .label }
 
-한 3-4개 챕터 앞부터이던가?
+한 3-4개 챕터 앞 부터이던가?
 이 책이 왜 이렇게 설명을 X신 같이 하고 있는지 궁금해지고 있다.
 이번 챕터 역시도 그 기대에 부응하듯 참 X 같이 기술된 챕터이다.
 대부분의 내용은 "뭐라는 거야?" 로 치부하며 넘겼고, 그냥 대학생 때 수업 노트 찾아서 내용을 채워 넣었다.
-이 책은 그래도 연습문제는 아주 나쁘지 않으니까, 희망을 가져보도록 하자.
+이 책은 그래도 연습문제가 아주 나쁘지는 않으니까, 희망을 가져보도록 하자.
 
 ## I. LU Decomposition
 
@@ -33,14 +33,14 @@ permalink: /docs/linalg/08-lu-decomposition
 사실 꼭 변태가 아니여도 연립방정식을 풀어줄 때 이 분해는 우리를 꽤 행복하게 만들어준다.
 어떤 일련의 방정식들이 $$\mathbf{A} \mathbf{x} = \mathbf{b}$$ 와 같이 행렬 형태로 표현되었다고 가정해보자.
 그런데, 아주 운이 좋게도 $$\mathbf{A}$$가 삼각 행렬의 형태를 가졌다고 가정해보자.
-- 만약, $$\mathbf{A}$$ 가 상삼각 행렬이었다면, 맨 아래 행부터 back substitution 을 진행하면 연립방정식의 해를 쉽게 구해줄 수 있다.
-- 만약, $$\mathbf{A}$$ 가 하삼각 행렬이었다면, 맨 아래 행부터 forward substitution 을 진행하면 연립방정식의 해를 쉽게 구해줄 수 있다.
+만약, $$\mathbf{A}$$ 가 상삼각 행렬이었다면, 맨 아래 행부터 back substitution 을 진행하면 연립방정식의 해를 쉽게 구해줄 수 있다.
+만약, $$\mathbf{A}$$ 가 하삼각 행렬이었다면, 맨 아래 행부터 forward substitution 을 진행하면 연립방정식의 해를 쉽게 구해줄 수 있다.
 
 {: .note }
 > 갑자기 뜬금 없이 `back/forward substitution` 따위를 이야기해서 조금 미안한데, 멋있는 척 하려고 만든 말이다 (내가 만든 것은 아니지만).
 > 그냥 맨 아래 행부터 위에 행으로 대입 (`back`) 하거나 맨 위에 행부터 아래 행으로 대입 (`forward`) 해 나가는 소거법의 일종이다.
 
-자 이제 다시 본론으로 돌아와서, 우리가 어찌저찌 열심히 노력해서 $$\mathbf{A} = \mathbf{L} \mahtbf{U}$$ 로 LU decomposition 을 했다고 해보자.
+자 이제 다시 본론으로 돌아와서, 우리가 어찌저찌 열심히 노력해서 $$\mathbf{A} = \mathbf{L} \mathbf{U}$$ 로 LU decomposition 을 했다고 해보자.
 이때, 우리는 주어진 방정식 $$mathbf{A} mathbf{x} = \mathbf{b}$$ 을 다음과 같이 변형하여 풀어줄 수 있다.
 달리 말하면, 두번째 식에서 $$\mathbf{U} \mathbf{x}$$ 을 forward substitution으로 구해주고, 곧바로 이어서 back substitution으로 $$\mathbf{x}$$ 를 구해줄 수 있다는 이야기이다.
 
@@ -53,7 +53,7 @@ $$
 
 ### How do I get it?
 
-셋째로, 그래서 실제로 이것 (`LU decompostion`) 을 어떻게 구하는지 이해해보도록 하겠다.
+셋째로, 실제로 이것 (`LU decompostion`) 을 어떻게 구하는지 이해해보도록 하겠다.
 이것을 구하는 방법은 사실 가우스 소거법 (가우스-조단이 아님에 주의하자) 에서 곧바로 유도된다.
 가우스 소거법에 등장하는 기본행 연산은 아래와 같이 총 3종류이고, 각각은 모두 원본행렬에 행렬을 곱하는 형태로 표현이 가능하다.
 
