@@ -1,12 +1,12 @@
 ---
-title: Eigen Value Decomposition
+title: EVD
 layout: default
 nav_order: 12
 parent: Linear Algebra
-permalink: /docs/linalg/11-eigen-value-decomposition
+permalink: /docs/linalg/11-evd
 ---
 
-# Eigen Value Decomposition
+# EVD
 
 **Textbook:** pp.252 - 281
 
@@ -19,7 +19,7 @@ permalink: /docs/linalg/11-eigen-value-decomposition
 뭐 못 참아도 뭘 어쪄겠는가?
 못배운 놈이 벌벌 기어야지.
 
-하여간, 이번 챕터의 제목은 `Eigen value decomposition` (너무 기니까 후술에서는 그냥 국문으로 고윳값 분해라고 부르겠음) 이다.
+하여간, 이번 챕터의 제목은 `Eigen value decomposition` (너무 기니까 후술에서는 `EVD` 또는 그냥 국문으로 `고윳값 분해`라고 부르겠음) 이다.
 참고로 고윳값 분해는 그냥 주어진 행렬의 고윳값/고유벡터를 구하는 것을 의미한다.
 사실 학부 때는 "주어진 행렬의 고윳값/고유벡터를 구해라"라고 표현했지, 고윳값 분해라고 표현하지는 않았는데.
 역시, 사람은 배울수록 현학적이 된다.
@@ -112,7 +112,7 @@ $$
 
 ## IV. Exercises
 
-이 챕터의 연습문제 풀이는 [여기](https://github.com/i-am-wonseoklee/i-am-wonseoklee.github.io/tree/main/docs/linalg/11-eigen-value-decomposition/exercises)에서 확인할 수 있다.
+이 챕터의 연습문제 풀이는 [여기](https://github.com/i-am-wonseoklee/i-am-wonseoklee.github.io/tree/main/docs/linalg/11-evd/exercises)에서 확인할 수 있다.
 
 <script src="https://utteranc.es/client.js"
         repo="i-am-wonseoklee/i-am-wonseoklee.github.io"
