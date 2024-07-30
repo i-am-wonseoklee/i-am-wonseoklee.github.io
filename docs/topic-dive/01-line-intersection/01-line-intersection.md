@@ -1,8 +1,8 @@
 ---
 title: Line Intersection
 layout: default
-parent: Algorithms
-permalink: /docs/algo/01-line-intersection
+parent: Topic dive
+permalink: /docs/topic-dive/01-line-intersection
 ---
 
 # Line Intersection
@@ -60,7 +60,7 @@ $$
 > 사실 수학적으로 이야기하면 아래의 두 경우는 교점을 정의할 수 없고, 따라서 구분할 필요가 없는 경우이기는 하지만 구현하는 기능에 따라 구분이 필요한 경우가 있을 수도 있다.
 > 이럴 때는 각 line의 y절편을 구하고 구한 두 y절편이 일치하는 경우 무수히 많은 교점을 갖는 것으로, 아니라면 교점이 하나도 없는 경우로 처리해 줄 수 있다.
 
-![1](/docs/algo/01-line-intersection/colinear-cases.png)
+![1](/docs/topic-dive/01-line-intersection/colinear-cases.png)
 
 ## Segment-segment intersection
 
@@ -85,7 +85,7 @@ $$
 다음으로, $${P}_{a}$$를 구할 수 없었던 경우, 죽, $${D}_{a} \times {D}_{b} = 0$$인 경우를 살펴보자.
 이는 아래 그림과 같이 다시 3가지 경우로 나눌 수 있다.
 
-![2](/docs/algo/01-line-intersection/segment-cases.png)
+![2](/docs/topic-dive/01-line-intersection/segment-cases.png)
 
 이 중 첫번째 경우는, line-line intersection에서 언급한 바와 같이 y절편을 살핌으로서 구분해낼 수 있다.
 

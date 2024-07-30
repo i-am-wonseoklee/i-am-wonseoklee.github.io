@@ -1,8 +1,8 @@
 ---
 title: Graham's Scan
 layout: default
-parent: Algorithms
-permalink: /docs/algo/02-grahams-scan
+parent: Topic dive
+permalink: /docs/topic-dive/02-grahams-scan
 ---
 
 # Graham's Scan
@@ -20,7 +20,7 @@ permalink: /docs/algo/02-grahams-scan
 > 예를 들어, 아래 그림의 좌측 polygon은 convex polygon이고 우측 polygon은 convex polygon이 아니다.
 > 우측 polygon에서 적색 점선 위에 있는 점들은 polygon 내부에 위치하고 있지 **않음**을 알 수 있다.
 >
-> ![](/docs/algo/02-grahams-scan/convex.png)
+> ![](/docs/topic-dive/02-grahams-scan/convex.png)
 
 ## I. Intuition of Graham's Scan
 
@@ -32,7 +32,7 @@ permalink: /docs/algo/02-grahams-scan
 그리고, "널빤지가 곧 2D 평면이요, 못들이 곧 점이니"라고 자기 암시를 해보도록 하자.
 이제 우리에게 주어진 미션은 못들을 모두 포함하는 convex hull을 찾는 것이다.
 
-![](/docs/algo/02-grahams-scan/gwa-01.png)
+![](/docs/topic-dive/02-grahams-scan/gwa-01.png)
 
 아마 가장 직관적인 접근은 아래와 같을 것이다.
 그리고 이것이 곧 `Gift wrapping algorithm`의 접근 방법이기도 하다.
@@ -45,7 +45,7 @@ permalink: /docs/algo/02-grahams-scan
 
 아래 그림은 위에서 설명한 과정을 그림으로 나타낸 것이다.
 
-![](/docs/algo/02-grahams-scan/gwa-02.png)
+![](/docs/topic-dive/02-grahams-scan/gwa-02.png)
 
 {: .note }
 > "`가장 먼저 만나는 못`"이라는 표현이 조금은 혼란스러울 수 있을 것 같다.
@@ -67,17 +67,17 @@ permalink: /docs/algo/02-grahams-scan
   적당히 최외곽(좌/우 상/하단)에 있는 점을 고르면 된다.
   아래 예시에서는 최좌상단에 있는 점을 골랐다.
 
-  ![](/docs/algo/02-grahams-scan/gs-01.png)
+  ![](/docs/topic-dive/02-grahams-scan/gs-01.png)
 
 - 고른 점을 기준으로 나머지 점들을 반시계 방향으로 이루는 각이 작은 순서대로 정렬한다.
   조금 더 formal하게 표현하면, 고른 점을 $$P$$, 나머지 점들을 $$P_{i}$$라고 할 때, "$$P \rightarrow P_{i}$$가 x축과 이루는 각이 작은 순서대로 정렬한다." 정도가 될 수 있다.
   정렬하면, 아래 예시와 같이 점들에 순서가 부여될 것이다(이해를 돕기위해 점선으로 각들을 표현해두었다).
   
-  ![](/docs/algo/02-grahams-scan/gs-02.png)
+  ![](/docs/topic-dive/02-grahams-scan/gs-02.png)
 
 - 정렬된 점들에서, 첫 2개의 점을 차례로 스택에 push해준다.
 
-  ![](/docs/algo/02-grahams-scan/gs-03.png)
+  ![](/docs/topic-dive/02-grahams-scan/gs-03.png)
 
 - 이제, 나머지 정렬된 점들을(i.e. 2번 부터) 차례로 순회하면서 아래를 진행한다.
   기술의 편의를 위해 $$S_{curr}$$는 스택의 top을, $$S_{prev}$$는 스택의 top 바로 아래 원소를 가르킨다고 하자.
@@ -94,7 +94,7 @@ permalink: /docs/algo/02-grahams-scan
 - (C)에서는 시계 방향에 있어 스택에서 직전 점이 pop되었다.
 - 더 이상 검사할 정점이 없는 (F)상태가 되면, 스택에 남아있는 점들이 convex hull polygon의 꼭지점이 되는 것을 알 수 있다.
 
-![](/docs/algo/02-grahams-scan/gs-04.png)
+![](/docs/topic-dive/02-grahams-scan/gs-04.png)
 
 <script src="https://utteranc.es/client.js"
         repo="i-am-wonseoklee/i-am-wonseoklee.github.io"

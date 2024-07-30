@@ -1,15 +1,11 @@
 ---
-title: Configuration Space (Part 1 of 2)
+title: Configuration Space I
 layout: default
-parent: Modern Robotics
-permalink: /docs/modern-robotics/00-configuration-space-00
+parent: Topic dive
+permalink: /docs/topic-dive/03-configuration-space-00
 ---
 
-# Configuration Space (Part 1 of 2)
-
-**Textbook:** pp.11 - 23
-
-**Lecture:** ~ Chapter 2: Configuration Space (Part 1 of 2)
+# Configuration Space I
 
 **Keywords:** `Configurtaion Space`{: .label }, `Degree of Freedom`{: .label }, `Grubler's Formula`{: .label }
 
@@ -36,7 +32,7 @@ Configuration은 robot을 이루는 모든 point들에 대한 **위치**를 나�
 > - Robotics에서는 body를 link라고 부르고, 통상 지면도 link로 친다고 한다.
 > - 일단 당분간은 1개의 joint는 항상 2개의 link를 연결하는 것으로 가정한다.
 
-![joints](/docs/modern-robotics/00-configuration-space-00/joints.png) 
+![joints](/docs/topic-dive/03-configuration-space-00/joints.png) 
 
 일단, 바보가 아니라면 위의 그림에 예시된 joint들의 dof는 쉽게 생각해낼 수 있다. 따라서, 아래 표의 dof 열은 쉽게 채워넣을 수 있을 것이다. `# of constraints` 열들이 조금 생소할 수 있는데, II절에서 dof를 $$\sum freedom \, of \, bodies - \# \, of \, independent \, constraints$$로도 정의할 수 있었던 것을 떠올려보자.
 
@@ -77,7 +73,7 @@ $$
 
 이 공식의 강력한 점은 언뜻보기에 몹시 복잡하게 생긴 로봇의 dof도 무지성으로 계산해낼 수 있다는 점이다. 가령 lecture에 등장하는 <strike>어떤 미친놈이 만들었나 싶은</strike> 아래의 `Stewart-Gough Platform`은 dof가 6임을 공식 1번으로 알아낼 수 있다.
 
-![stewart](/docs/modern-robotics/00-configuration-space-00/stewart.gif)
+![stewart](/docs/topic-dive/03-configuration-space-00/stewart.gif)
 
 {: .highlight }
 > `Stewart-Gough Platform`은 총 14개 link, 6개의 universal joint, 6개의 prismatic joint, 6개의 spherical joint로 이루어져 있다. 공식에 그대로 대입해주면, $$dof = 6(14-1-18)+2 \cdot 6 + 1 \cdot 6 + 3 \cdot 6 = 6$$을 얻을 수 있다. 

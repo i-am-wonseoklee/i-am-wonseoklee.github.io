@@ -1,8 +1,8 @@
 ---
 title: Pick's Theorem
 layout: default
-parent: Algorithms
-permalink: /docs/algo/00-picks-theorem
+parent: Topic dive
+permalink: /docs/topic-dive/00-picks-theorem
 ---
 
 # Pick's Theorem
@@ -22,7 +22,7 @@ permalink: /docs/algo/00-picks-theorem
 
 예를들어, 아래 그림은 $$A = 16,\,B = 12,\,C = 11$$인 경우이고 정리가 잘 성립하는 것을 알 수 있다.
 
-![fig_01](/docs/algo/00-picks-theorem/example.png)
+![fig_01](/docs/topic-dive/00-picks-theorem/example.png)
 
 `Pick's Theorem`의 증명을 위해서 아래 2개의 lemma를 도입하도록 하자. 각 lemma는 읽어보면 참 당연한 내용이라서 별도로 증명은 하지 않는다. 나는 수학자가 아니니까.
 
@@ -38,7 +38,7 @@ permalink: /docs/algo/00-picks-theorem
 
 `lemma 1`, `lemma 2`가 이야기하는 내용을 바로 직전에 예시한 다각형에 표현해보면 아래와 같다. 적색과 청색 2가지 타입의 기본 삼각형들을 사용해서 주어진 다각형을 잘 분할한 것을 살필 수 있다.
 
-![fig_02](/docs/algo/00-picks-theorem/example2.png)
+![fig_02](/docs/topic-dive/00-picks-theorem/example2.png)
 
 이제 본격적으로 증명을 시작해보자.
 
