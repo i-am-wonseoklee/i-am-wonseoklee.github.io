@@ -1,11 +1,11 @@
 ---
-title: Tips Of Life
+title: Tips of Life
 layout: default
 parent: Rambling Note
 permalink: /docs/rambling-note/tips-of-life
 ---
 
-# Tips Of Life
+# Tips of Life
 
 애들을 키즈카페에 풀어놓고 유튜브 쇼츠를 내리고 있노라면 때때로 "이건 기억하고 싶다" 싶은 삶의 팁들을 발견할 때가 있다.
 심상을 위해 키즈카페 운운하였으나, 책을 읽다가 또는 누군가의 링크드인 게시물을 보다가 비슷한 발견이 찾아올 때가 많다.
