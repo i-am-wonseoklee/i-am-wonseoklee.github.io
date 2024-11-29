@@ -2,7 +2,7 @@
 title: SOLID
 layout: default
 parent: Topic dive
-permalink: /docs/topic-dive/08-solid
+permalink: /docs/topic-dive/05-solid
 ---
 
 # SOLID

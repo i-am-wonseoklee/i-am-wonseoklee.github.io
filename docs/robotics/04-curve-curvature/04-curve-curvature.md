@@ -1,8 +1,8 @@
 ---
 title: Curve Curvature
 layout: default
-parent: Topic dive
-permalink: /docs/topic-dive/10-curve-curvature
+parent: Robotics
+permalink: /docs/robotics/04-curve-curvature
 ---
 
 # Curve Curvature
@@ -28,7 +28,7 @@ Paper에는 Frenet-Serret 공식으로부터 이것이 유도된다고 써있는
 예를들어, 아래의 롤러코스터 그림과 같이 당신이 롤러코스터 트랙의 한 점에 위치해있다고 가정하자.
 그 위치를 기준으로 당신의 운동은 청색 점선과 같이 원운동으로 가정할 수 있다.
 
-![fig01](/docs/topic-dive/10-curve-curvature/images/fig01.png)
+![fig01](/docs/robotics/04-curve-curvature/images/fig01.png)
 
 Curve 위의 특정 위치 $$\mathbf{x}(s)$$에서 위에서 언급한 원을 찾았고 그 원의 반지름이 $$R(\mathbf{x}(s))$$이었다고 해보자.
 Curve의 특정 위치 $$\mathbf{x}(s)$$에서의 curvature $$\kappa(\mathbf{x})$$는 단순히 $$R(\mathbf{x}(s))$$의 역수로 아래와 같이 정의된다.
@@ -42,7 +42,7 @@ $$
 이전 섹션의 내용을 머릿속에 잘 새겨두고, 이제 극한을 이용해서 curvature를 정의해보자.
 주어진 curve를 무진장 확대하니 아래 그림과 같이 보였다고 생각해보자.
 
-![fig02](/docs/topic-dive/10-curve-curvature/images/fig02.png)
+![fig02](/docs/robotics/04-curve-curvature/images/fig02.png)
 
 이전 섹션에서 밝힌 $$\kappa(\mathbf{x}(s))$$의 정의와 (i.e., R의 역수), 모두에 이야기한 고등학교 때 배운 삼각형 외접원 공식 (i.e., $$R = \frac{abc}{4S}$$)을 사용하면 아래의 식을 얻어낼 수 있다.
 

@@ -2,7 +2,7 @@
 title: CUDA Thread Hierarchy
 layout: default
 parent: Topic dive
-permalink: /docs/topic-dive/06-cuda-thread-hierarchy
+permalink: /docs/topic-dive/03-cuda-thread-hierarchy
 ---
 
 # CUDA Thread Hierarchy
@@ -45,7 +45,7 @@ some_kernel<<<grid_dim, thread_block_dim>>>(a, b, c);
 이렇게 `some_kernel`을 Launch했을 때 프로그래머 머릿속에는 **반드시** 아래의 그림이 떠올라야만 한다.
 (그림을 발로 그린 나머지 계속 보다보면 매직아이가 되는 것 같은 느낌이 있지만...양해해주길 바람)
 
-![](/docs/topic-dive/06-cuda-thread-hierarchy/fig1.png)
+![](/docs/topic-dive/03-cuda-thread-hierarchy/fig1.png)
 
 이제 이 그림에서 각각의 요소가 나타내는 바가 무엇인지 뜯어보도록 하자.
 
@@ -109,7 +109,7 @@ __global__ void some_kernel(std::uint8_t* pa, std::uint8_t* pb, std::uint8_t* pc
 아래 그림은 필자가 생각하는 GPU architecture의 fundamental을 보이고 있다.
 적어도 아래 그림에 등장하는 컴포넌트에 대해서는 자세한 설명을 이어나가보려 한다.
 
-![](/docs/topic-dive/06-cuda-thread-hierarchy/fig2.png)
+![](/docs/topic-dive/03-cuda-thread-hierarchy/fig2.png)
 
 ### III.2. Thread Block Scheduler
 
@@ -152,12 +152,12 @@ for thread_block in grid:
 Warp scheduler는 SP들이 thread를 실제로 수행하도록 각 Warp를 SP에 할당한다.
 필자가 예시했던 GPU architecture에서는 하나의 SM이 64개의 SP를 가지고 있으므로 warp scheduler는 아래 그림과 같이 `Warp #0`을 `SP #0~31`에, `Warp #1`을 `SP #32~63`에 할당하게 될 것이고, `Warp #2`, `Warp #3`은 warp scheduler에서 pending 될 것이다.
 
-![](/docs/topic-dive/06-cuda-thread-hierarchy/fig3.png)
+![](/docs/topic-dive/03-cuda-thread-hierarchy/fig3.png)
 
 여기서 바로 이 warp가 비로소 GPU kernel의 최소수행단위가 되는데, 동일한 warp 내의 모든 thread들은 모두 동시에 수행되며 이 warp 단위로 싱크가 맞음이 보장되게 된다.
 "싱크가 맞는다"라는 표현이 의미하는 바는 아래 그림과 같은데, 달리 표현하면 **"한 thread가 유난히 늦게 끝난다면, 동일한 warp내의 다른 thread들이 이를 기다려줍니다."** 정도가 될 수 있다.
 
-![](/docs/topic-dive/06-cuda-thread-hierarchy/fig4.png)
+![](/docs/topic-dive/03-cuda-thread-hierarchy/fig4.png)
 
 사실 warp는 그 동작을 이해하는 것 보다 **"대체 이딴 개념을 왜 도입했을까?"**를 깨닫는게 훨씬 중요하다고 생각된다.
 결론부터 이야기하면 multiplexing을 통해서 최대한 SP를 놀지 못하게하기 위해서이다.

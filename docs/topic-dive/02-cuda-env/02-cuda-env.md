@@ -2,7 +2,7 @@
 title: CUDA Setup
 layout: default
 parent: Topic dive
-permalink: /docs/topic-dive/05-cuda-env
+permalink: /docs/topic-dive/02-cuda-env
 ---
 
 # CUDA Setup

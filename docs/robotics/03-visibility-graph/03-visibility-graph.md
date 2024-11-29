@@ -1,8 +1,8 @@
 ---
 title: Visibility Graph
 layout: default
-parent: Topic dive
-permalink: /docs/topic-dive/09-visibility-graph
+parent: Robotics
+permalink: /docs/robotics/03-visibility-graph
 ---
 
 # Visibility Graph
@@ -250,7 +250,7 @@ example_world = generate_world(
 draw_world(example_world)
 ```
 
-![fig01](/docs/topic-dive/09-visibility-graph/images/fig01.png)
+![fig01](/docs/robotics/03-visibility-graph/images/fig01.png)
 
 ## IV. Implement naive algorithm
 
@@ -292,7 +292,7 @@ def construct_visibility_graph_naively(
 구현한 naive approach를 미리 생성해둔 example world에 적용하면 아래와 같은 결과를 얻을 수 있다.
 제대로 잘 구현이 되었음을 알 수 있다.
 
-![fig02](/docs/topic-dive/09-visibility-graph/images/fig02.png)
+![fig02](/docs/robotics/03-visibility-graph/images/fig02.png)
 
 ## V. D.T Lee's approach
 
@@ -380,7 +380,7 @@ D.T Lee는 반직선 (i.e. sweep line) 을 통해 평면을 시계 방향으로 
 `sweep-{i}` 따위로 표현되고 이있는 반직선들이 바로 그것인데, 최초의 수평 방향 (positive-x 방향으로 뻗는) 반직선부터 시작하여 시계 방향으로 sweep line을 차례로 바꾸어가며 평면을 훑는다.
 최초의 sweep line을 제외하고는 모두 주어진 한 꼭지점 `p`로부터 다른 다각형의 꼭지점을 잇는 직선들이 sweep line으로 사용된다.
 
-![fig03](/docs/topic-dive/09-visibility-graph/images/fig03.png)
+![fig03](/docs/robotics/03-visibility-graph/images/fig03.png)
 
 #### V.2.2. Manage `candidate_sides`
 
@@ -389,7 +389,7 @@ D.T Lee는 위에서 밝힌 방법대로 평면을 sweep하며 `candidate_sides`
 반대로 이야기하면, `candidate_sides`에 속하지 않는 다각형의 변들은 확인해볼 필요가 없다는 것이다.
 대체 뭘 어떻게 관리하기에 이러한 마법이 가능한 것인지 알아보도록 하자.
 
-![fig04](/docs/topic-dive/09-visibility-graph/images/fig04.png)
+![fig04](/docs/robotics/03-visibility-graph/images/fig04.png)
 
 위의 그림은 첫번째, 두번째, 그리고 세번째 sweeping을 보이고 있다.
 `sweep-0`을 시작하기 전 최초의 상태에서는 `candidate_sides`는 비어있다.
@@ -787,7 +787,7 @@ def get_visible_points(
 
 구현한 알고리즘을 helper function들을 이용해서 그려보면 아래와 같이 naive approach와 동일한 결과를 얻을 수 있다.
 
-![fig05](/docs/topic-dive/09-visibility-graph/images/fig05.png)
+![fig05](/docs/robotics/03-visibility-graph/images/fig05.png)
 
 <script src="https://utteranc.es/client.js"
         repo="i-am-wonseoklee/i-am-wonseoklee.github.io"
