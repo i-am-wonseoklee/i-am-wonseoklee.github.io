@@ -27,7 +27,7 @@ Cubic spline의 목표는 3차 함수를 사용해서 주어진 N개의 점을 �
 > 많은 사람들이 오해하는 사실 중 하나는 cubic spline이 마치 $$f: x \rightarrow y$$ 를 직접 구해준다고 생각하는 것이다.
 > 그런데, 조금만 생각해보아도 이것은 수학적으로 불가능한 것을 알 수 있다.
 > 예를 들어, 당장 바로 위에서 언급한 그림만 보아도 적색 곡선은 양함수 형태로 나타낼 수 없지 않은가?
-> 그래서, cubic spline은 주로 [호장 재매개화](/docs/robotics/06-arc-length-reparametrization/)를 통해서 $$(s_{i}, x_{i}), \,(s_{i}, y_{i})$$ 으로 샘플을 찢고(?) 각각에 대해 spline을 활용하여 $$f_{x}: s \rightarrow x$$, $$f_{y}: s \rightarrow y$$을 만드는 방법을 사용한다.
+> 그래서, cubic spline은 주로 [호장 재매개화](/docs/robotics/06-arc-length-reparameterization/)를 통해서 $$(s_{i}, x_{i}), \,(s_{i}, y_{i})$$ 으로 샘플을 찢고(?) 각각에 대해 spline을 활용하여 $$f_{x}: s \rightarrow x$$, $$f_{y}: s \rightarrow y$$을 만드는 방법을 사용한다.
 
 ## Algorithm
 
@@ -35,7 +35,7 @@ Cubic spline의 목표는 3차 함수를 사용해서 주어진 N개의 점을 �
 
 ### Step 1: x, y 각각에 대한 cubic spline 문제로 분할하기
 
-$$(x_{i}, y_{i})_{i=1...N}$$ 을 $$f: x \rightarrow y$$ 로 모델링해버리면 양함수 형태를 구할 수 없을 수도 있으므로, [호장 재매개화](/docs/robotics/06-arc-length-reparametrization/)를 통해 $$x,\,y$$ 각각에 대한 cubic spline문제로 변환한다.
+$$(x_{i}, y_{i})_{i=1...N}$$ 을 $$f: x \rightarrow y$$ 로 모델링해버리면 양함수 형태를 구할 수 없을 수도 있으므로, [호장 재매개화](/docs/robotics/06-arc-length-reparameterization/)를 통해 $$x,\,y$$ 각각에 대한 cubic spline문제로 변환한다.
 다시말해, $$(x_{i}, y_{i})_{i=1...N}$$ 을 $$(s_{i}, x_{i})_{i=1...N}, \,(s_{i}, y_{i})_{i=1...N}$$ 로 찢어두라는 이야기이다.
 이제 두 샘플군에 대해 각각 cubic spline $$f_{x}: s \rightarrow x$$, $$f_{y}: s \rightarrow y$$ 을 구할 것이고, 마지막에 $$(f_x(s_i), f_y(s_i))_{i=1...N}$$과 같이 복원하도록 할 것이다.
 $$f_{x}: s \rightarrow x$$, $$f_{y}: s \rightarrow y$$ 을 유도하는 과정은 서로 동일하므로 이후의 기술에서는 $$f_{x}: s \rightarrow x$$ 를 구하는 방법에 대해서만 이야기하도록 하겠다.
