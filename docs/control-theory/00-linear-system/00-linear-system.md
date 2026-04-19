@@ -1,6 +1,7 @@
 ---
 title: Linear System
 layout: default
+nav_order: 1
 parent: Control Theory
 permalink: /docs/control-theory/00-linear-system
 ---

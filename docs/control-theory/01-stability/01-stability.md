@@ -1,6 +1,7 @@
 ---
 title: Stability
 layout: default
+nav_order: 2
 parent: Control Theory
 permalink: /docs/control-theory/01-stability
 ---
