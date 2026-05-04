@@ -35,6 +35,14 @@ $$
 
 이제 $$\mathbf{A} - \mathbf{BK}$$ 를 $$\mathbf{D}$$ 로 정의하면, $$\dot{\mathbf{x}} = \mathbf{Dx}$$ 를 얻는다.
 
+참고로 덧붙이면 (지금 이 챕터의 내용과 크게 상관은 없지만), 이 시스템의 해는 아래와 같다.
+유도 과정은 향후 다른 챕터에서 다룰 예정이므로, 여기서는 결과를 먼저 받아들이고 넘어가자.
+
+$$
+\mathbf{x}(t) = e^{\mathbf{A}t}\mathbf{x}(0)
+        + \int_{0}^{t} e^{\mathbf{A}(t - \tau)}\mathbf{B}\mathbf{u}(\tau)\, d\tau
+$$
+
 ## II. Controllability
 
 어떤 시스템이 controllable하다는 것은 아래 두 가지와 동치이다.
