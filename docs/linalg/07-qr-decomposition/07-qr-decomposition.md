@@ -77,7 +77,7 @@ $$
 \right] \mathbf{R}
 $$ 이 성립한다 (일단, $$\mathbf{R}$$ 에 대한 이해는 미뤄두도록 하자).
 
-![](./orthonormalbasis.png)
+![](/docs/linalg/07-qr-decomposition/orthonormalbasis.png)
 
 ## III. Gram-Schmidt Decomposition
 
@@ -112,7 +112,7 @@ $$
 
 갑자기 뭔 개소리야 싶을텐데, 바로 위 절에서 $$\mathbf{Q}$$ 를 구하는 행위가 곧 $$\mathbf{v}_1, \mathbf{v}_2, ... $$ 의 정규직교기저를 구하는 것이었음을 잘 상기하고 아래 그림을 살펴보자.
 
-![](./gr-process.png)
+![](/docs/linalg/07-qr-decomposition/gr-process.png)
 
 설명의 편의를 위해 **(1)** 에서 $$\mathbf{v}_1 = \overrightarrow{af}$$, $$\mathbf{v}_2 = \overrightarrow{ai}$$, $$\mathbf{v}_3 = \overrightarrow{aj}$$ 라고 해보겠다.
 "갑자기 네 맘대로 왜 정육면체 같은 것을 넣었니?" 같은 의문이 들었다면, 임의의 정육면체 한 변을 $$\mathbf{v}_1$$ 에 일치시킴으로서 늘 일반화 가능한 상황임을 유념하자.
