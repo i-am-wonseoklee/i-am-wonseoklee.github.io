@@ -11,8 +11,6 @@ permalink: /docs/topic-dive/00-picks-theorem
 
 `Pick's Theorem`는 모든 꼭지점이 격자점 위에 존재하는 특수한 다각형에 대해서, 그 내부의 격자점 수를 헤아릴 때 사용해봄직한 정리이다.
 
-이를 사용해볼 수 있는 online judge 문제로는 [Baekjoon 7694](/docs/boj/07694)가 있다.
-
 {: .highlight }
 > `Pick's Theorem:`
 > 
