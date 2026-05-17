@@ -286,3 +286,11 @@ print("K:", K)
 $$\mathbf{Q} = \text{diag}(1, 1, 10, 1)$$, $$\mathbf{R} = 20$$으로 지정해서 Pole을 배치하면 아래와 같다.
 
 ![](/docs/control-theory/04-inverted-pendulum-cart/assets/figures/fig02.gif)
+
+<script src="https://utteranc.es/client.js"
+        repo="i-am-wonseoklee/i-am-wonseoklee.github.io"
+        issue-term="pathname"
+        theme="github-dark-orange"
+        crossorigin="anonymous"
+        async>
+</script>
