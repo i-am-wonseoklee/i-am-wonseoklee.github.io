@@ -8,7 +8,7 @@ permalink: /docs/control-theory/05-observability
 
 # Observability
 
-**Keywords:** `Observability`{: .label }, `Observability Matrix`{: .label }, `Luenberger Observer`{: .label }
+**Keywords:** `Observability`{: .label }, `Observability Matrix`{: .label }
 
 ## I. Motivation
 
