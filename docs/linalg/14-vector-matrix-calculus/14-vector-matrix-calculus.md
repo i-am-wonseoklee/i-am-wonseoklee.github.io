@@ -1,8 +1,9 @@
 ---
 title: Vector and Matrix Calculus
 layout: default
-parent: Topic dive
-permalink: /docs/topic-dive/06-vector-matrix-calculus
+nav_order: 15
+parent: Linear Algebra
+permalink: /docs/linalg/14-vector-matrix-calculus
 ---
 
 # Vector and Matrix Calculus
