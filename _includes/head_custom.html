@@ -4,3 +4,32 @@
   {% when "mathjax" %}
     {% include mathjax.html %}
 {% endcase %}
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: "loose"
+  });
+
+  function renderMermaidBlocks() {
+    const blocks = document.querySelectorAll("pre > code.language-mermaid");
+
+    blocks.forEach((code) => {
+      const pre = code.parentElement;
+      if (!pre || pre.dataset.mermaidProcessed === "true") return;
+
+      const container = document.createElement("div");
+      container.className = "mermaid";
+      container.textContent = code.textContent || "";
+
+      pre.replaceWith(container);
+      container.removeAttribute("data-processed");
+    });
+
+    mermaid.run({ querySelector: ".mermaid" });
+  }
+
+  document.addEventListener("DOMContentLoaded", renderMermaidBlocks);
+</script>
