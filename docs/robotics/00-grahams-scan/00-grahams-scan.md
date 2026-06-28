@@ -7,6 +7,13 @@ permalink: /docs/robotics/00-grahams-scan
 
 # Graham's Scan
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Graham's Scan`{: .label }, `Convex Hull`{: .label }
 
 `Graham's scan`은 2D 평면상에 주어진 N개의 점들을 모두 포함하는 convex polygon을 찾는 알고리즘이다.

@@ -10,6 +10,9 @@ plugins:
 
 math: mathjax
 
+kramdown:
+  toc_levels: 2..6
+
 callouts:
   highlight:
     color: purple

@@ -7,6 +7,13 @@ permalink: /docs/robotics/02-configuration-space-01
 
 # Configuration Space II
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Configuration Space`{: .label }, `Topology`{: .label }, `Holonomic Constarint`{: .label }, `Nonholonomic Constarint`{: .label }, `Pfaffian Constarint`{: .label }
 
 ## I. Configuration Space Topology

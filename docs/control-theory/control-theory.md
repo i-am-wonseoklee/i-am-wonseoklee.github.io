@@ -2,6 +2,7 @@
 layout: default
 title: Control Theory
 has_children: true
+nav_order: 3
 permalink: /docs/control-theory
 ---
 

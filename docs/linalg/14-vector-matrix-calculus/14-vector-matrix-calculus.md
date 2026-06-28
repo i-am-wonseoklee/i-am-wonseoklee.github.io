@@ -8,6 +8,13 @@ permalink: /docs/linalg/14-vector-matrix-calculus
 
 # Vector and Matrix Calculus
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 필자는 학부에서 벡터나 행렬을 대상으로 하는 calculus를 배우지 않았다.
 대학원에서는 시스템을 전공했으니 말할 필요도 없고.
 최근 딥러닝, 로보틱스 등의 분야가 인기를 얻으면서 벡터 및 행렬을 대상으로 하는 calculus가 문헌에 자주 등장하는 것 같다.

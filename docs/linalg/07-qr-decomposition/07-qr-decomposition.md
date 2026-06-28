@@ -8,6 +8,13 @@ permalink: /docs/linalg/07-qr-decomposition
 
 # QR Decomposition
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.179 - 192
 
 **Keywords:** `orthogonal matrix`{: .label }, `qr decomposition`{: .label }

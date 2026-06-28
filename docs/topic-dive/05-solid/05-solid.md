@@ -7,6 +7,13 @@ permalink: /docs/topic-dive/05-solid
 
 # SOLID
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `SOLID`{: .label }, `Single Responsibility Principle`{: .label }, `Open/Close Princicple`{: .label}, `Liskov Substitution Principle`{: .label}, `Interface Segregation Principle`{: .label }, `Dependency Inversion Principle`{: .label }
 
 ## I. What is SOLID?

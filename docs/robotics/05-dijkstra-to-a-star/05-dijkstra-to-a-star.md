@@ -7,6 +7,13 @@ permalink: /docs/robotics/05-dijkstra-to-a-star
 
 # Dijkstra to A-star
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `A-star`{: .label }, `A*`{: .label }
 
 A-star 알고리즘은 single-source-single-destination 최단경로 문제를 풀 수 있는 알고리즘이다.

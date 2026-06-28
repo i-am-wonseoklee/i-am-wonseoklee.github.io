@@ -8,6 +8,13 @@ permalink: /docs/linalg/04-matrices-part2
 
 # Matrices (Part 2)
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.107 - 140
 
 **Keywords:** `Frobenius norm`{: .label }, `Row/Column/Null space`{: .label }, `Rank`{: .label }

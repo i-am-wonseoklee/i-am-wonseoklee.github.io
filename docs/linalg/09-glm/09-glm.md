@@ -8,6 +8,13 @@ permalink: /docs/linalg/09-glm
 
 # GLM (General Linear Model)
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.211 - 229
 
 **Keywords:** `glm`{: .label }, `general linear model`{: .label }

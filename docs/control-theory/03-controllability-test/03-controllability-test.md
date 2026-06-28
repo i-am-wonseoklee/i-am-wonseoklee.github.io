@@ -8,6 +8,13 @@ permalink: /docs/control-theory/03-controllability-test
 
 # Controllability Test
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Controllability Test`{: .label }, `PBH Test`{: .label }
 
 [앞선 챕터](/docs/control-theory/02-controllability/)에서 선형 시스템의 controllability를 살펴보았고, Kalman rank condition을 통해 시스템이 controllable한지 아닌지를 판별하는 방법을 소개했다.

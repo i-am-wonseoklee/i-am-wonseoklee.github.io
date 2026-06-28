@@ -8,6 +8,13 @@ permalink: /docs/linalg/02-vector-applications
 
 # Vector Applications
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.70 - 83
 
 **Keywords:** `Pearson Correlation Coefficient`{: .label }

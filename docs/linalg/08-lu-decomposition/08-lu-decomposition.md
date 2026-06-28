@@ -8,6 +8,13 @@ permalink: /docs/linalg/08-lu-decomposition
 
 # LU Decomposition
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.193 - 210
 
 **Keywords:** `lu decomposition`{: .label }, `reduced row echelon form`{: .label }

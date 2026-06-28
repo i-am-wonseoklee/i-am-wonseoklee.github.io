@@ -8,6 +8,13 @@ permalink: /docs/linalg/03-matrices-part1
 
 # Matrices (Part 1)
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.84 - 106
 
 **Keywords:** `Shifting matrix`{: .label }, `Multiplicative method`{: .label }

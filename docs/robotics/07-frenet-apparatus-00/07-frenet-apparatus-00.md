@@ -7,6 +7,13 @@ permalink: /docs/robotics/07-frenet-apparatus-00
 
 # Frenet Apparatus I
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Frenet Serret Frame`{: .label }, `TNB Frame`{: .label }, `Frenet Serret Theorem`{: .label }, `Frenet Apparatus`{: .label }
 
 It's been a long time!

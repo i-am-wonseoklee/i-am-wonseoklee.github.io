@@ -8,6 +8,13 @@ permalink: /docs/linalg/05-matrices-applications
 
 # Matrices Applications
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.141 - 158
 
 **Keywords:** `Correlattion coefficient matrix`{: .label }, `Covariance matrix`{: .label }

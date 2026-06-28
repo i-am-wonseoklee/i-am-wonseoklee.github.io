@@ -8,6 +8,13 @@ permalink: /docs/linalg/13-evd-svd-applications
 
 # EVD and SVD Applications
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.298 - 322
 
 **Keywords:** `principal component analysis`{: .label }, `linear discriminant analysis`{: .label }
