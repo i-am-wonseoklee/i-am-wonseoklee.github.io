@@ -23,7 +23,7 @@ permalink: /docs/reproducing-papers/00-plan-t/05-implementation-note
 이 포스팅은 세 갈래로 구성된다.
 재현성을 높이기 위해 원본 코드에 추가한 작업, 논문을 직접 구현하면서 마주친 특이 사항, 그리고 최종 구현 결과를 순서대로 정리했다.
 
-## I. 추가 작업
+## I. Additional Work
 
 ### I.1. Dev Container
 
@@ -59,7 +59,7 @@ CUDA 버전과 PyTorch 버전의 궁합은 끔찍하게 복잡하고, 의존성 
 |:--:|
 | <em>Figure 2. SQLite DB에 저장된 프레임 시각화 예시(학습 데이터셋 형태). Red bbox: Ego vehicle, Blue bboxes: Obstacles (vehicles), Green boxes: Routes, Yellow stars: Target points, White circles: Labeled waypoints.</em> |
 
-## II. 구현 특이 사항
+## II. Implementation Notes
 
 ### II.1. CARLA, CARLA, CARLA...
 
@@ -67,7 +67,7 @@ CUDA 버전과 PyTorch 버전의 궁합은 끔찍하게 복잡하고, 의존성 
 그런데 필자는 `CARLA`를 써본 적이 없었고, 공식 문서는 솔직히 말해 썩 친절하지 않다.
 그래서 직접 부딪히며 배운 내용을 정리해둔다.
 
-#### II.1.A. CARLA의 동작 방식
+#### II.1.A. CARLA Execution Model
 
 `CARLA`는 기본적으로 **비동기(async) 모드**로 동작한다.
 서버가 알아서 시뮬레이션을 돌리고, 클라이언트는 그 흐름에 편승해 데이터를 가져가는 방식이다.
@@ -115,7 +115,7 @@ traffic_manager = self.client.get_trafficmanager()
 traffic_manager.set_synchronous_mode(True)  # 이걸 빠뜨리면 안 된다
 ```
 
-#### II.1.B. Actor를 주행시키고 데이터를 수집하는 법
+#### II.1.B. Driving Actors and Collecting Data
 
 차량(ego 및 NPC)은 모두 TM의 **autopilot**에 맡겨 주행시킨다.
 ego는 차선 변경 없이 직진만 하도록 TM 옵션을 별도로 꺼뒀다.
@@ -137,7 +137,7 @@ if diff > math.pi / 2:
     return None  # 이 프레임은 수집하지 않는다
 ```
 
-#### II.1.C. 주의사항: 그래도 간혹 죽는다
+#### II.1.C. Caveat: It Still Crashes Sometimes
 
 모든 것을 잘 맞춰도 `CARLA`는 때때로 예고 없이 죽는다.
 더 당혹스러운 것은 **죽는 순서와 방법이 정해져 있다**는 것이다.
@@ -172,9 +172,88 @@ self.world.apply_settings(settings)  # 나중에
 `carla.Client`를 재사용하면 TM C++ 스레드에 상태가 누적되고, 여러 에피소드가 지나면서 결국 `TimeoutException` abort로 터진다.
 찜찜하지만 에피소드 시작마다 클라이언트를 새로 연결하는 것이 현재로서는 가장 안정적인 방법이었다.
 
-## III. 구현 결과
+## III. Results
 
-<!-- 학습 곡선, 최종 성능 수치, 논문 보고값과의 비교 등 -->
+이 리포지토리의 목표는 SOTA 성능 갱신이 아니라 논문 재현이다.
+그래서 과도한 하이퍼파라미터 탐색이나 장시간 학습 없이, 파이프라인이 정상적으로 학습되는지에 초점을 맞춰 결과를 정리했다.
+
+### III.1. Training Setup and Convergence
+
+학습은 MEDIUM 설정(`d_model=512`, 8 layers, 8 heads)으로 진행했다.
+옵티마이저는 AdamW(`lr=1e-4`, batch size 32), 총 100 epoch 학습했고, epoch 92에서 learning rate를 10배 감쇠했다.
+학습/검증 분할은 마지막 2개 에피소드를 validation으로 홀드아웃하는 방식이다.
+
+전체 학습 시간은 약 2.6시간이었고, validation 기준 waypoint L1(`val/loss_wp`)은 약 0.45 m 수준까지 감소했다.
+auxiliary loss(`val/loss_aux`)도 전반적으로 하향 추세를 보였다.
+
+| ![fig3](/docs/reproducing-papers/00-plan-t/05-implementation-note/assets/fig3_tensorboard.png) |
+|:--:|
+| <em>Figure 3. 100 epoch 동안의 TensorBoard 곡선(좌→우): validation waypoint loss, validation auxiliary loss, training waypoint loss, training auxiliary loss.</em> |
+
+### III.2. Offline Evaluation Results
+
+best checkpoint를 사용해 validation 홀드아웃 2개 에피소드(총 391 samples)에서 오프라인 평가를 수행했다.
+
+| Metric | Value |
+|---|---:|
+| ADE (4개 waypoint 평균) | 0.76 m |
+| FDE (마지막 waypoint) | 1.23 m |
+| Step 1 L2 (0.5 s) | 0.34 m |
+| Step 2 L2 (1.0 s) | 0.60 m |
+| Step 3 L2 (1.5 s) | 0.88 m |
+| Step 4 L2 (2.0 s) | 1.23 m |
+| Validation waypoint L1 (`loss_wp`) | 0.41 |
+| Validation auxiliary CE (`loss_aux`) | 1.44 |
+
+prediction horizon이 길어질수록 오차가 완만하게 증가하는 형태를 보였는데, 이는 단기 예측이 더 정확하고 장기 예측으로 갈수록 불확실성이 누적되는 일반적인 경향과 일치한다.
+
+위 수치는 "충분히 학습된다"는 재현 관점의 sanity check로는 의미가 있지만, 모델의 성능 상한을 보여준다고 보기는 어렵다.
+실제로 Figure 3에서 학습 후반까지 일부 곡선이 계속 하강하고, epoch 92의 learning-rate decay 직후 다시 한 번 눈에 띄는 하락이 나타난다.
+즉, 더 긴 학습 스케줄이나 추가 감쇠 스텝을 적용하면 성능이 더 개선될 여지는 충분히 남아 있다.
+
+### III.3. Closed-Loop Simulation
+
+오프라인 지표는 단일 프레임 기준의 예측 오차를 본다.
+반면 closed-loop 주행은 모델이 자신의 예측을 다시 입력으로 받아 틱마다 누적되는 상황을 평가하므로, 결국 직접 주행 영상을 확인하는 것이 가장 중요하다.
+
+아래 영상은 best checkpoint를 CARLA에서 closed-loop로 구동한 BEV 기록이다.
+오프라인 렌더링과 동일한 ego-frame 시점을 사용하지만, 이 경우에는 ground truth 경로가 없다.
+ego는 모델이 예측한 waypoint만으로 주행하며, PID + pure-pursuit controller가 이를 steering/throttle 명령으로 변환한다.
+
+<video controls playsinline preload="metadata" width="100%">
+    <source src="/docs/reproducing-papers/00-plan-t/05-implementation-note/assets/fig4_simulation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+▶ [Watch the closed-loop driving clip (MP4)](/docs/reproducing-papers/00-plan-t/05-implementation-note/assets/fig4_simulation.mp4)
+
+<em>Figure 4. Closed-loop driving. Red bbox: ego vehicle, blue bboxes: obstacles (vehicles), green boxes: routes, yellow star: target point, orange circles: predicted waypoints. The traffic-light state is shown top-left.</em>
+
+이 영상은 점수용 벤치마크라기보다, "실제로 어떻게 달리는지"를 보여주는 데모에 가깝다.
+논문 설정에서는 obstacle을 vehicle만 보므로, 정적 구조물 충돌은 failure로 집계되지 않는다.
+대신 차량 간 충돌은 run이 바로 끝난다. 그리고 오프라인 실험과 마찬가지로, 여기서도 추가 튜닝 없이 기본 설정 그대로 돌렸다.
+
+closed-loop에서 가장 헷갈렸던 건 CARLA 좌표계였다.
+CARLA는 +x가 전방, +y가 오른쪽이라서, 보통 로보틱스에서 익숙한 "+y가 왼쪽" 관례와 반대다.
+
+모델 입력은 world 좌표를 직접 쓰지 않고 ego frame으로 변환해서 만든다.
+이때도 기준은 같다. ego 오른쪽이 +y, 정면이 +x다.
+즉 obstacle, route, predicted waypoint에서 `y > 0`은 전부 "내 오른쪽"이다.
+
+컨트롤러도 이 부호를 그대로 맞춰야 한다.
+CARLA `VehicleControl.steer`는 +가 우회전이므로, 목표점이 오른쪽이면 `atan2(y, x)`가 양수이고 steer도 양수여야 맞다.
+
+처음엔 익숙한 관례대로 부호를 뒤집어 넣어서, 커브마다 반대로 꺾었다.
+결국 controller에서 그 부호 반전 한 줄을 지우고 해결했다.
+교훈은 단순하다. CARLA에서는 좌표 부호를 가정하지 말고 직접 확인해야 한다.
+
+그 외 포인트는 아래와 같다.
+
+- Speed는 별도 head에서 직접 예측하지 않는다. 0.5 s 간격 waypoint의 첫 두 점 거리 / 0.5 s를 목표 속도로 보고, longitudinal PID가 이를 따라간다.
+- 3D 렌더링 없이 동기 모드로 수동 tick을 밟아서 run이 deterministic하고, 속도는 inference 시간에 맞춰진다. 출력은 BEV 비디오만 저장한다.
+- Closed-loop에는 ground truth future trajectory가 없어서, 오프라인 렌더링의 흰색 궤적 대신 예측 궤적(주황색)만 그린다.
+- 정적 구조물 충돌은 평가 실패로 바로 집계되진 않지만 물리 영향은 그대로 남는다. 벽에 박히면 run이 이어져도 차량은 사실상 그 자리에 묶인다.
+
 
 <script src="https://utteranc.es/client.js"
         repo="i-am-wonseoklee/i-am-wonseoklee.github.io"
