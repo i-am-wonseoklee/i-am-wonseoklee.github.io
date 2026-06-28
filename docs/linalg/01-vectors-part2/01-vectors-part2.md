@@ -8,6 +8,13 @@ permalink: /docs/linalg/01-vectors-part2
 
 # Vectors (Part 2)
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.53 - 69
 
 **Keywords:** `Linearly Independent`{: .label }

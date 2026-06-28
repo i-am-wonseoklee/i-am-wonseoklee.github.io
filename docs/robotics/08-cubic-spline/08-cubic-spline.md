@@ -7,6 +7,13 @@ permalink: /docs/robotics/08-cubic-spline
 
 # Cubic Spline
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Cubic Spline`{: .label }
 
 Cubic spline은 복수개의 샘플을 통과하는 부드러운 곡선을 만들되 각 곡선이 3차함수로 이루어지도록하는 보간법의 일종이다.

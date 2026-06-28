@@ -7,6 +7,13 @@ permalink: /docs/robotics/04-curve-curvature
 
 # Curve Curvature
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Curvature`{: .label }
 
 필자는 최근에 읽고 있던 [survey paper](https://arxiv.org/abs/1604.07446)에서 임의의 curve $$\mathbf{x}$$의 곡률 $$\kappa$$를 구하는 아래의 식을 발견하였다.

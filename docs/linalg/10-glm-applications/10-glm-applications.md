@@ -8,6 +8,13 @@ permalink: /docs/linalg/10-glm-applications
 
 # GLM Applications
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.230 - 251
 
 **Keywords:** `general linear model`{: .label }, `multicollinearity`{: .label }

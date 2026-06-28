@@ -9,6 +9,13 @@ permalink: /docs/reproducing-papers/00-plan-t/04-main-contribution
 
 # Main Contribution
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `plan t`{: .label }
 
 이 포스팅에서는 본격적으로 `PlanT`를 설명한다.

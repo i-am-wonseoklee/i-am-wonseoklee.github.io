@@ -9,6 +9,13 @@ permalink: /docs/reproducing-papers/00-plan-t/02-gru-decoder
 
 # GRU Decoder
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `GRU`{: .label }, `decoder`{: .label }
 
 {: .note }

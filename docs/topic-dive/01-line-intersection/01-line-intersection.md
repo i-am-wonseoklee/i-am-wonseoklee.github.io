@@ -7,6 +7,13 @@ permalink: /docs/topic-dive/01-line-intersection
 
 # Line Intersection
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Line Intersection`{: .label }, `Line Segment Intersection`{: .label }
 
 이 포스팅에서는 2D line(직선) 또는 2D line segment(선분)의 교차점을 구하는 방법에 대해서 정리해볼 것이다.

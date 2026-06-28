@@ -8,6 +8,13 @@ permalink: /docs/linalg/00-vectors-part1
 
 # Vectors (Part 1)
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.25 - 52
 
 **Keywords:** `Cross Product`{: .label }, `Outer Product`{: .label }, `Orthogonal Vector Decomposition`{: .label }

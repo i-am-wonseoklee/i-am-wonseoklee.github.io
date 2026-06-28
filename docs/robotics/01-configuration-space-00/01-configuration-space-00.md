@@ -7,6 +7,13 @@ permalink: /docs/robotics/01-configuration-space-00
 
 # Configuration Space I
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `Configurtaion Space`{: .label }, `Degree of Freedom`{: .label }, `Grubler's Formula`{: .label }
 
 ## I. Configuration

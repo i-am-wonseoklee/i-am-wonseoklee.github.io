@@ -9,6 +9,13 @@ permalink: /docs/reproducing-papers/00-plan-t/03-miscellaneous
 
 # Miscellaneous
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `token type embedding`{: .label }, `classification token`{: .label }
 
 {: .note }

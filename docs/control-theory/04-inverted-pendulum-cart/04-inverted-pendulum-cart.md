@@ -8,6 +8,13 @@ permalink: /docs/control-theory/04-inverted-pendulum-cart
 
 # Inverted Pendulum Cart
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 코드 없이 배운 내용만 늘어놓다 보니 자꾸 공허한 기분이 든다.
 정말 이게 머릿속에 들어온 건지, 아니면 그냥 읽은 건지 헷갈리기도 하고.
 그래서 간단한 예제를 하나 직접 풀어봐서 배운 게 뭔지 확인해보려고 한다.

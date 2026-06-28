@@ -9,6 +9,13 @@ permalink: /docs/reproducing-papers/00-plan-t/01-transformer-encoder
 
 # Transformer Encoder
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Keywords:** `transformer`{: .label }, `encoder`{: .label }
 
 {: .note }

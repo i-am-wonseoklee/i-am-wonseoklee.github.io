@@ -8,6 +8,13 @@ permalink: /docs/linalg/06-inverse
 
 # Inverse
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.159 - 178
 
 **Keywords:** `left/right inverse matrix`{: .label }

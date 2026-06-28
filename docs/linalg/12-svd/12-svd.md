@@ -8,6 +8,13 @@ permalink: /docs/linalg/12-svd
 
 # SVD
 
+## TOC
+{: .no_toc }
+
+1. TOC
+{:toc}
+
+
 **Textbook:** pp.282 - 297
 
 **Keywords:** `singular value decomposition`{: .label }
