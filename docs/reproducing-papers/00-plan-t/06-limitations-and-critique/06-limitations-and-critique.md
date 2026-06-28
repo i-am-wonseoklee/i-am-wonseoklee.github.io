@@ -17,99 +17,51 @@ permalink: /docs/reproducing-papers/00-plan-t/06-limitations-and-critique
 
 **Keywords:** `PlanT`{: .label }, `critique`{: .label }, `limitations`{: .label }
 
-이 포스팅은 구현 난이도나 재현 과정의 고생담이 아니라, 논문 자체의 주장과 실험 설계가 어디까지 유효한지를 비판적으로 점검하는 글이다.
-목적은 결과를 깎아내리는 것이 아니라, 결론의 적용 범위를 더 정확히 해석하는 데 있다.
+이 챕터에서는 `PlanT` 논문을 공부하면서 느낀 아쉬운 점들을 정리한다.
+목표는 이 논문의 결함을 찾는 게 아니라, **다음에 모션 플래닝 논문을 공부할 때 뭘 고려해야 할지**를 생각해보는 것이다.
 
-## I. What This Critique Targets
+## I. Static Obstacle Representation
 
-`PlanT`는 object-level representation을 사용해 planning을 수행하고, 해석 가능성과 성능을 함께 강조한다.
-문제는 이런 장점들이 어떤 가정 위에서 성립하는지, 그리고 그 가정이 깨질 때도 동일한 결론이 유지되는지가 논문에서 충분히 분리되어 검증되었는가이다.
+`PlanT`는 모든 객체를 **6개 속성 벡터**로 표현한다.
 
-아래의 비판 포인트는 크게 네 가지 축으로 나뉜다.
+$$o_i = \{z_i, x_i, y_i, \phi_i, w_i, h_i\}$$
 
-- 표현 방식(object-level tokenization)의 구조적 한계
-- perception upstream 의존성
-- explainability 주장에 대한 검증 강도
-- evaluation protocol의 일반화 가능성
+동적 차량(속도 있음)에는 잘 작동한다. 근데 도로 레이아웃, 건물, 중앙선 같은 정적 요소까지 모두 이 6-tuple bbox 형태로 표현하려니까 좀 억지 같다.
+특히 확장된 구조물들은 단일 bounding box로 표현하기 어렵다.
 
-## II. Representation: What Is Gained, What Is Lost
+## II. Route Input: 차선 레벨 플래닝이 먼저 필요하다
 
-object-level 토큰화는 계산 효율과 구조적 단순성이라는 분명한 이점을 준다.
-하지만 동일한 선택은 표현 손실(lossy abstraction)도 동반한다.
+`PlanT`가 받는 입력 중 가장 까다로운 게 **route**다.
 
-연속적인 장면의 디테일, 예를 들어 차선 경계의 미세한 형상이나 지도 오차의 지역적 패턴은 bounding box 기반 객체 표현에서 직접적으로 보존되기 어렵다.
-이는 인식 단계가 완벽하지 않을 때 더 크게 드러난다.
-입력이 이미 추상화된 상태이기 때문에, planner가 잃어버린 정보를 복구할 여지가 거의 없다.
+Route를 얻으려면 ego가 **"현재 어느 차선을 따라 어디로 가야 하는가"**를 미리 알아야 한다.
+논문에서는 데이터셋의 ground-truth route를 사용하지만, 실제 차에 넣으려면:
 
-즉, object-level representation은 "좋은 추상화"가 될 수도 있지만, 동시에 "복구 불가능한 정보 삭제"가 될 수도 있다.
-논문은 전자의 장점을 잘 보여주지만, 후자의 비용을 정량적으로 분해해 보여주지는 못한다.
+1. **HD Map** 필요
+2. **Global Route Planner** 필요  
+3. **Lane-level Behavior Planner** 필요
 
-## III. Planner Performance vs Perception Quality
+즉, `PlanT`는 **"이미 내가 따라갈 차선이 정해져 있을 때, 속도와 미세한 횡방향 움직임만 조절"**하는 거다.
 
-`PlanT`의 성능은 planner 구조만으로 결정되지 않는다.
-실제로는 detection, tracking, map alignment 같은 upstream 품질에 강하게 종속된다.
+그 결과, `PlanT`는 차선 변경, 경로 우회, 계획 밖의 응급 기동이 불가능하다.
+이게 바로 내가 다음 논문을 고를 때 봐야 할 점이다: **전제 조건이 뭐고, 그게 현실적으로 보장될 수 있나?**
 
-이때 생기는 핵심 해석 문제는 다음과 같다.
+## III. Motion Planning vs. Policy
 
-- 성능 개선이 planner 자체의 기여인지
-- 아니면 cleaner한 객체 입력 덕분인지
+내 입장에서 보면 `PlanT`는 플래닝과 정책 사이 뭔가 애매한 곳에 있다.
+모션 플래닝 엔지니어 관점에서는 그냥 신박한 느낌의 속도 플래너에 가깝다.
+더 고급진 건 아니지만, 신경망으로 속도를 부드럽게 뽑아낸다는 게 신박할 뿐이다.
+이것도 다음 논문을 고를 때 봐야 할 점이다: **이 모델이 정말 뭘 하는 건지 정확히 파악했나?**
 
-논문에서 보고된 결과만으로는 두 효과를 명확히 분리하기 어렵다.
-같은 planner라도 perception 노이즈 모델이 바뀌면 결과가 크게 달라질 수 있는데, 이 민감도 분석이 충분히 깊게 다뤄지지 않았다.
+## IV. 느낀점
 
-## IV. Explainability Claim: Interpretation vs Causality
+결국 이 논문이 정말 완벽한 모션 플래너는 아니라는 거고, 실제 자율주행 시스템에 그대로 쓰기엔 많은 제약이 있다.
+하지만 그래도 첫 연습 삼아 신경망 기반 플래닝을 한 번 해보고, 트랜스포머와 GRU의 실제 작동을 경험해본 것만으로도 충분히 가치 있었다.
 
-논문은 explainable planning이라는 메시지를 전면에 둔다.
-하지만 attention map이나 토큰 중요도 시각화는 해석 단서를 제공할 뿐, 인과적 설명(causal explanation)을 자동으로 보장하지는 않는다.
 
-예를 들어 "이 토큰을 많이 봤다"는 사실과 "그래서 이 waypoint가 생성되었다"는 결론 사이에는 간극이 있다.
-후자를 주장하려면 intervention 기반 검증(특정 토큰 제거/교란 시 출력 변화)이나 counterfactual 실험이 더 체계적으로 필요하다.
-
-요약하면, `PlanT`의 explainability는 "읽기 쉬운 표현"에는 가깝지만, "인과적으로 검증된 설명"까지는 아직 거리가 있다.
-
-## V. Evaluation Protocol and Generalization Limits
-
-시뮬레이터 기반 평가는 빠르고 반복 가능하다는 장점이 있다.
-반대로 말하면, 특정 시뮬레이터의 분포 편향에 결론이 묶일 위험도 크다.
-
-특히 다음 질문들이 남는다.
-
-- 도시 구조가 달라져도 동일한 경향이 유지되는가?
-- 교통 밀도와 상호작용 복잡도가 올라가도 안정적인가?
-- 희귀 사건(급정지 cut-in, 시야 가림, 엣지 케이스)에서 강건한가?
-
-오프라인 지표(ADE/FDE)가 좋더라도 closed-loop 안정성으로 직결된다고 단정하기 어렵다.
-즉, 평균 오차 지표는 필요조건일 수 있지만 충분조건은 아니다.
-
-## VI. Safety and Long-Tail Scenarios
-
-자율주행에서 중요한 것은 평균 성능이 아니라 tail risk다.
-평균적으로 잘 달리는 모델과, 위험한 상황에서 안전한 모델은 다를 수 있다.
-
-`PlanT`는 planning 성능을 설득력 있게 보여주지만, safety case 관점에서 다음 항목은 상대적으로 덜 다뤄진다.
-
-- worst-case 성능 하한
-- uncertainty calibration과 보수적 의사결정
-- 위험 상황에서의 fail-safe 동작
-
-결국 실제 배치 관점에서는 "평균적으로 좋다"보다 "망가질 때 어떻게 망가지는가"가 더 중요하다.
-이 지점이 후속 연구로 가장 필요한 부분이다.
-
-## VII. What Would Strengthen the Paper
-
-논문의 가치를 깎지 않으면서도, 결론의 설득력을 크게 높일 수 있는 실험은 비교적 명확하다.
-
-- perception 노이즈 강도별 성능 민감도 분석
-- attention 설명과 intervention 결과의 상관 분석
-- 다중 seed/다중 town에서 분산 포함 리포팅
-- offline 지표와 closed-loop 안전 지표의 상관관계 제시
-- long-tail 시나리오 전용 벤치마크 추가
-
-이런 보강이 들어가면 `PlanT`는 "흥미로운 방법"에서 한 걸음 더 나아가 "신뢰 가능한 방법"으로 해석되기 쉬워진다.
-
-## VIII. Closing Note
-
-요약하면, `PlanT`는 object-level planning의 가능성을 잘 보여준 의미 있는 작업이다.
-다만 논문이 제시한 강점 중 일부는 특정 가정 위에서만 강하게 성립하며, explainability와 safety에 관한 핵심 질문은 아직 열려 있다.
-
-그래서 이 논문의 가장 큰 기여는 완결된 답이라기보다, 앞으로 무엇을 더 검증해야 하는지 명확한 연구 의제를 던졌다는 점에 있다.
+<script src="https://utteranc.es/client.js"
+        repo="i-am-wonseoklee/i-am-wonseoklee.github.io"
+        issue-term="pathname"
+        theme="github-dark-orange"
+        crossorigin="anonymous"
+        async>
+</script>
