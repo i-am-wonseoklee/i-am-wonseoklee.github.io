@@ -378,7 +378,7 @@ $$
 
 처음에 언급했던 질량-스프링-댐퍼 시스템으로 돌아가 보자.
 
-![질량-스프링-댐퍼 모델](assets/msd-system.png)
+![질량-스프링-댐퍼 모델](/docs/topic-dive/07-laplace-transform/assets/msd-system.png)
 
 $$
 m\ddot{x}(t) + c\dot{x}(t) + kx(t) = 0
@@ -430,11 +430,11 @@ $$
 
 아래 그림은 $$m=1, k=4, x(0)=1, \dot{x}(0)=0$$를 고정하고 $$c$$만 바꿨을 때의 시간응답이다.
 
-![감쇠 조건별 시간응답 비교](assets/msd-responses.png)
+![감쇠 조건별 시간응답 비교](/docs/topic-dive/07-laplace-transform/assets/msd-responses.png)
 
 같은 조건에서 극점 위치를 그리면 왜 응답이 달라지는지 더 명확해진다.
 
-![감쇠 조건별 극점 위치](assets/msd-poles.png)
+![감쇠 조건별 극점 위치](/docs/topic-dive/07-laplace-transform/assets/msd-poles.png)
 
 정리하면, 질량-스프링-댐퍼 문제에서 라플라스 변환은
 시간영역 미분방정식을 $$X(s)$$의 유리함수로 바꾸고,
